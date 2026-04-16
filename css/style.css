@@ -1,0 +1,232 @@
+:root {
+    --gb-bg: #8b956d;
+    --gb-dark: #0f380f;
+    --gb-mid: #306230;
+    --gb-light: #9bbc0f;
+    --white: #ffffff;
+    --hp-green: #38c863;
+    --hp-bg: #4a4a4a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace;
+}
+
+body {
+    background-color: #2b2b2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#gameboy-frame {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px 10px 40px 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: linear-gradient(135deg, #e0e0e0 0%, #a8a8a8 100%);
+}
+
+#screen {
+    width: 600px;
+    height: 450px;
+    background-color: var(--white);
+    border: 15px solid #222;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.combat-area {
+    display: flex;
+    padding: 20px;
+    height: 150px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.enemy-area {
+    align-items: flex-start;
+}
+
+.sprite {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.pokemon {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+.fire-sprite {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5253 100%);
+    border-radius: 50% 50% 10% 10%;
+}
+
+.water-sprite {
+    background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+    border-radius: 30%;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.stats-box {
+    border: 4px solid var(--gb-dark);
+    padding: 10px 20px;
+    border-radius: 10px 0 10px 0;
+    width: 280px;
+    background-color: #fffff0;
+    box-shadow: -4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.enemy-stats {
+    align-self: flex-start;
+}
+
+.player-stats {
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #222;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+}
+
+h2 .level {
+    font-size: 18px;
+}
+
+.hp-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.hp-label {
+    font-weight: bold;
+    color: #cca400;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.hp-bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: var(--hp-bg);
+    border: 2px solid #222;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.hp-bar {
+    height: 100%;
+    background-color: var(--hp-green);
+    width: 100%;
+    transition: width 0.3s ease-out;
+}
+
+.numerical-stats {
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pp-stats {
+    text-align: right;
+    font-size: 18px;
+    color: #555;
+}
+
+#bottom-panel {
+    background-color: var(--white);
+    height: 150px;
+    border-top: 4px solid #222;
+    display: flex;
+    flex-grow: 1;
+}
+
+#log-container {
+    width: 55%;
+    border-right: 4px solid #222;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#log p {
+    margin-top: 5px;
+    line-height: 1.2;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#controls-container {
+    width: 45%;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    width: 90%;
+    padding: 10px;
+    font-size: 22px;
+    background-color: #fff;
+    border: 3px solid #222;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.1s;
+    box-shadow: -3px 3px 0px rgba(0,0,0,0.8);
+}
+
+.btn:hover:not(:disabled) {
+    background-color: #f0f0f0;
+    transform: translate(2px, -2px);
+    box-shadow: -5px 5px 0px rgba(0,0,0,0.8);
+}
+
+.btn:active:not(:disabled) {
+    background-color: #ddd;
+    transform: translate(-3px, 3px);
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.8);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon UI - Combate por Turnos</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div id="gameboy-frame">
+        <div id="screen">
+            <div class="combat-area enemy-area">
+                <div class="stats-box enemy-stats">
+                    <h2 id="enemy-name">Squirtle <span class="level">Nv5</span></h2>
+                    <div class="hp-container">
+                        <div class="hp-label">HP:</div>
+                        <div class="hp-bar-bg">
+                            <div class="hp-bar" id="enemy-health-bar"></div>
+                        </div>
+                    </div>
+                    <div class="numerical-stats">
+                        <span id="enemy-health">44</span> / <span id="enemy-max-health">44</span>
+                    </div>
+                    <div class="pp-stats">
+                        PP: <span id="enemy-pp">40</span>
+                    </div>
+                </div>
+                <div class="sprite enemy-sprite">
+                    <div class="pokemon water-sprite"></div>
+                </div>
+            </div>
+
+            <div class="combat-area player-area">
+                <div class="sprite player-sprite">
+                    <div class="pokemon fire-sprite"></div>
+                </div>
+                <div class="stats-box player-stats">
+                    <h2 id="player-name">Charmander <span class="level">Nv5</span></h2>
+                    <div class="hp-container">
+                        <div class="hp-label">HP:</div>
+                        <div class="hp-bar-bg">
+                            <div class="hp-bar" id="player-health-bar"></div>
+                        </div>
+                    </div>
+                    <div class="numerical-stats">
+                        <span id="player-health">39</span> / <span id="player-max-health">39</span>
+                    </div>
+                    <div class="pp-stats">
+                        PP: <span id="player-pp">35</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottom-panel">
+                <div id="log-container">
+                    <div id="log"></div>
+                </div>
+                <div id="controls-container">
+                    <button id="btn-attack" class="btn">Luchar (Placaje)</button>
+                    <button id="btn-ability" class="btn">Habilidad</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+
+</body>
+</html>
