@@ -675,7 +675,22 @@ body {
 
 .party-bottom {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#btn-cancel-party, #btn-close-stats {
+    background-color: #f8f8f8;
+    border: 3px solid #304838;
+    border-radius: 10px;
+    padding: 5px 20px;
+    text-align: center;
+    box-shadow: 2px 2px 0px #207058;
+    font-size: 20px;
+}
+
+#btn-cancel-party:hover, #btn-close-stats:hover {
+    background-color: #e0e0e0;
 }
 #stats-screen {
     position: absolute;
@@ -789,6 +804,6 @@ body {
 
 .stats-bottom {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 10px;
 }
