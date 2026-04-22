@@ -279,15 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
         partyScreen.style.display = 'flex';
     });
 
+    attackBtn.addEventListener('click', showMovesMenu);
+    btnCancelMove.addEventListener('click', hideMovesMenu);
+    
+    bagBtn.addEventListener('click', showBagMenu);
+    btnCancelBag.addEventListener('click', hideBagMenu);
+
+    abilityBtn.addEventListener('click', showPartyMenu);
+    btnCancelParty.addEventListener('click', hidePartyMenu);
+    
+    runBtn.addEventListener('click', () => { game.playerAction('run'); });
 });
-
-attackBtn.addEventListener('click', showMovesMenu);
-btnCancelMove.addEventListener('click', hideMovesMenu);
-
-bagBtn.addEventListener('click', showBagMenu);
-btnCancelBag.addEventListener('click', hideBagMenu);
-
-abilityBtn.addEventListener('click', showPartyMenu);
-btnCancelParty.addEventListener('click', hidePartyMenu);
-
-runBtn.addEventListener('click', () => { game.playerAction('run'); });
