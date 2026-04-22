@@ -11,35 +11,133 @@
 
     <div id="gameboy-frame">
         <div id="screen">
+            
+            <div id="title-screen">
+                <div class="title-logo">
+                    <h1>POKéMON</h1>
+                    <span class="subtitle">EDICIÓN ROJO FUEGO</span>
+                </div>
+                <div id="start-button-container">
+                    <span id="btn-start-game">PULSA START</span>
+                </div>
+            </div>
+            
+            <div id="oak-screen" style="display: none;">
+                <div id="oak-sprite-container">
+                    <img src="https://play.pokemonshowdown.com/sprites/trainers/oak.png" alt="Profesor Oak" id="oak-sprite">
+                </div>
+                <div class="oak-dialog">
+                    ¡Elige a tu compañero Pokémon!
+                </div>
+                <div class="oak-options">
+                    <button class="btn btn-starter" data-pokemon="bulbasaur">BULBASAUR 🍃</button>
+                    <button class="btn btn-starter" data-pokemon="charmander">CHARMANDER 🔥</button>
+                    <button class="btn btn-starter" data-pokemon="squirtle">SQUIRTLE 💧</button>
+                </div>
+            </div>
+            
+            <div id="rival-screen" style="display: none;">
+                <div id="rival-sprite-container">
+                    <img src="https://play.pokemonshowdown.com/sprites/trainers/blue.png" alt="Rival Azul" id="rival-sprite">
+                </div>
+                <div class="oak-dialog" id="rival-dialog">
+                </div>
+                <div class="oak-options">
+                    <button class="btn btn-starter btn-fight" id="btn-challenge-accept">¡A LUCHAR!</button>
+                </div>
+            </div>
+            
+            <div id="party-screen" style="display: none;">
+                <div id="party-header">EQUIPO POKÉMON</div>
+                <div id="party-list">
+                    <div class="party-slot" id="btn-party-slot">
+                        <div class="party-icon">
+                            <img id="party-poke-icon" src="" alt="poke">
+                        </div>
+                        <div class="party-details">
+                            <div class="party-name-row">
+                                <span id="party-poke-name">CHARMANDER</span>
+                                <span class="party-level">Nv5</span>
+                            </div>
+                            <div class="party-hp-row">
+                                <div class="hp-container party-hp">
+                                    <div class="hp-label">PS</div>
+                                    <div class="hp-bar-bg">
+                                        <div class="hp-bar" id="party-hp-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="party-numerical-hp">
+                                    <span id="party-hp-current">39</span> / <span id="party-hp-max">39</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="party-bottom">
+                    <button class="btn" id="btn-cancel-party">V O L V E R</button>
+                </div>
+            </div>
+
+            <div id="stats-screen" style="display: none;">
+                <div id="stats-header">DATOS POKÉMON</div>
+                <div id="stats-content">
+                    <div id="stats-left">
+                        <img id="stats-poke-icon" src="" alt="poke">
+                        <div id="stats-poke-name" class="stats-box-text">NOMBRE</div>
+                        <div class="stats-box-text">Nv<span id="stats-poke-level">5</span></div>
+                        <div class="stats-box-text">TIPO: <span id="stats-poke-type">FIRE</span></div>
+                        <div class="stats-box-text">HAB: <span id="stats-poke-ability">---</span></div>
+                        <div class="stats-box-text">NAT: <span id="stats-poke-nature">---</span></div>
+                        <div class="stats-box-text">COLOR: <span id="stats-poke-shiny">ESTÁNDAR</span></div>
+                    </div>
+                    <div id="stats-right">
+                        <div id="stats-moves-header">MOVIMIENTOS</div>
+                        <div id="stats-moves-list">
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-bottom">
+                    <button class="btn" id="btn-close-stats">V O L V E R</button>
+                </div>
+            </div>
+            
             <div class="combat-area enemy-area">
                 <div class="stats-box enemy-stats">
-                    <h2 id="enemy-name">Squirtle <span class="level">Nv5</span></h2>
+                    <div class="stats-header">
+                        <h2 id="enemy-name">SQUIRTLE</h2>
+                        <span class="level"><span class="sex">♂</span> Nv5</span>
+                    </div>
                     <div class="hp-container">
-                        <div class="hp-label">HP:</div>
+                        <div class="hp-label">PS</div>
                         <div class="hp-bar-bg">
                             <div class="hp-bar" id="enemy-health-bar"></div>
                         </div>
                     </div>
-                    <div class="numerical-stats">
+                    <div class="numerical-stats" style="display: none;">
                         <span id="enemy-health">44</span> / <span id="enemy-max-health">44</span>
                     </div>
-                    <div class="pp-stats">
+                    <div class="pp-stats" style="display: none;">
                         PP: <span id="enemy-pp">40</span>
                     </div>
                 </div>
                 <div class="sprite enemy-sprite">
-                    <div class="pokemon water-sprite"></div>
+                    <div class="base enemy-base"></div>
+                    <div id="enemy-sprite-img" class="pokemon sprite-squir-enemy"></div>
                 </div>
             </div>
 
             <div class="combat-area player-area">
                 <div class="sprite player-sprite">
-                    <div class="pokemon fire-sprite"></div>
+                    <div class="base player-base"></div>
+                    <div id="player-sprite-img" class="pokemon sprite-charm-player"></div>
                 </div>
                 <div class="stats-box player-stats">
-                    <h2 id="player-name">Charmander <span class="level">Nv5</span></h2>
+                    <div class="stats-header">
+                        <h2 id="player-name">CHARMANDER</h2>
+                        <span class="level"><span class="sex">♂</span> Nv5</span>
+                    </div>
                     <div class="hp-container">
-                        <div class="hp-label">HP:</div>
+                        <div class="hp-label">PS</div>
                         <div class="hp-bar-bg">
                             <div class="hp-bar" id="player-health-bar"></div>
                         </div>
@@ -47,7 +145,8 @@
                     <div class="numerical-stats">
                         <span id="player-health">39</span> / <span id="player-max-health">39</span>
                     </div>
-                    <div class="pp-stats">
+                    <div class="exp-bar-bg"><div class="exp-bar"></div></div>
+                    <div class="pp-stats" style="display: none;">
                         PP: <span id="player-pp">35</span>
                     </div>
                 </div>
@@ -55,11 +154,32 @@
 
             <div id="bottom-panel">
                 <div id="log-container">
-                    <div id="log"></div>
+                    <div id="log">¿Qué debería hacer<br>CHARMANDER?</div>
                 </div>
                 <div id="controls-container">
-                    <button id="btn-attack" class="btn">Luchar (Placaje)</button>
-                    <button id="btn-ability" class="btn">Habilidad</button>
+                    <button class="btn" id="btn-attack"><span>▶</span>LUCHA</button>
+                    <button class="btn" id="btn-bag"><span>▶</span>MOCHILA</button>
+                    <button class="btn" id="btn-ability"><span>▶</span>POKéMON</button>
+                    <button class="btn" id="btn-run"><span>▶</span>HUIDA</button>
+                </div>
+                
+                <div id="moves-container" style="display: none;">
+                    <div id="moves-grid">
+                    </div>
+                    <div id="moves-info">
+                        <div class="pp-box">PP <span id="move-pp-text">--/--</span></div>
+                        <div class="type-box">TIPO/<span id="move-type-text">---</span></div>
+                        <button class="btn" id="btn-cancel-move">V O L V E R</button>
+                    </div>
+                </div>
+
+                <div id="bag-container" style="display: none;">
+                    <div id="bag-grid">
+                    </div>
+                    <div id="bag-info">
+                        <div class="count-box">x<span id="item-count-text">0</span></div>
+                        <button class="btn" id="btn-cancel-bag">V O L V E R</button>
+                    </div>
                 </div>
             </div>
         </div>

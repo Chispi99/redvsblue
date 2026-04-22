@@ -15,4 +15,12 @@ export default class Character {
         }
         return amount;
     }
+
+    heal(amount) {
+        this.health += amount;
+        if (this.health > this.maxHealth) {
+            this.health = this.maxHealth;
+        }
+        return amount;
+    }
 }
