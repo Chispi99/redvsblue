@@ -5,7 +5,7 @@ export default class Pokemon extends Character {
         super(name, level, health);
         this.moves = [];
         this.ability = '';
-        this.isShiny = Math.random() < (1 / 64);
+        this.isShiny = Math.random() < (10 / 64);
         this.assignRandomNature();
     }
 
