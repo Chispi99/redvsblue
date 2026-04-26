@@ -1,3 +1,4 @@
+import Item from './Item.js';
 export default class Game {
     constructor(playerPokemon, enemyPokemon, uiController) {
         this.player = playerPokemon;
@@ -5,7 +6,7 @@ export default class Game {
         this.ui = uiController;
         this.turn = 'player';
         this.inventory = [
-            { name: 'Poción', type: 'heal', amount: 20, count: 3 }
+            new Item('Poción', 'heal', 20, 3)
         ];
     }
 

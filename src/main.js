@@ -2,6 +2,7 @@ import FirePokemon from './FirePokemon.js';
 import WaterPokemon from './WaterPokemon.js';
 import GrassPokemon from './GrassPokemon.js';
 import Game from './Game.js';
+import UIController from './UIController.js';
 document.addEventListener('DOMContentLoaded', () => {
     const logBox = document.getElementById('log');
 
@@ -27,29 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const enemyMaxHealth = document.getElementById('enemy-max-health');
     const enemyHealthBar = document.getElementById('enemy-health-bar');
 
-    const uiController = {
-        logMessage: (msg) => {
-            logBox.innerHTML = msg;
+    const uiController = new UIController(
+        logBox,
+        {
+            health: playerHealth,
+            maxHealth: playerMaxHealth,
+            healthBar: playerHealthBar,
+            name: document.getElementById('player-name')
         },
-        updateStatus: (player, enemy) => {
-            playerHealth.innerText = player.health;
-            playerMaxHealth.innerText = player.maxHealth;
-            playerHealthBar.style.width = `${(player.health / player.maxHealth) * 100}%`;
-
-            document.getElementById('player-name').innerText = player.name.toUpperCase() + (player.isShiny ? ' ★' : '');
-            document.getElementById('enemy-name').innerText = enemy.name.toUpperCase() + (enemy.isShiny ? ' ★' : '');
-
-            enemyHealth.innerText = enemy.health;
-            enemyMaxHealth.innerText = enemy.maxHealth;
-            enemyHealthBar.style.width = `${(enemy.health / enemy.maxHealth) * 100}%`;
+        {
+            health: enemyHealth,
+            maxHealth: enemyMaxHealth,
+            healthBar: enemyHealthBar,
+            name: document.getElementById('enemy-name')
         },
-        enableButtons: (enabled) => {
-            attackBtn.disabled = !enabled;
-            abilityBtn.disabled = !enabled;
-            bagBtn.disabled = !enabled;
-            runBtn.disabled = !enabled;
+        {
+            attack: attackBtn,
+            ability: abilityBtn,
+            bag: bagBtn,
+            run: runBtn
         }
-    };
+    );
 
     let game;
 
@@ -149,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = `<span>▶</span>${move.name.toUpperCase()}`;
 
             btn.addEventListener('pointerenter', () => {
-                movePpText.innerText = `${move.pp}/${move.maxPP}`;
+                movePpText.innerText = `${move.pp}/${move.MaxPp}`;
                 moveTypeText.innerText = move.type.toUpperCase();
             });
 
@@ -162,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (game.player.moves.length > 0) {
-            movePpText.innerText = `${game.player.moves[0].pp}/${game.player.moves[0].maxPP}`;
+            movePpText.innerText = `${game.player.moves[0].pp}/${game.player.moves[0].MaxPp}`;
             moveTypeText.innerText = game.player.moves[0].type.toUpperCase();
         }
     };
@@ -253,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('stats-poke-ability').innerText = game.player.ability.toUpperCase();
         document.getElementById('stats-poke-level').innerText = game.player.level;
         document.getElementById('stats-poke-nature').innerText = game.player.nature.name.toUpperCase();
-        document.getElementById('stats-poke-shiny').innerText = game.player.isShiny ? 'VARIOPINTO ★' : 'ESTÁNDAR';
+        document.getElementById('stats-poke-shiny').innerText = game.player.isShiny ? 'SHINY ★' : 'ESTÁNDAR';
         document.getElementById('stats-poke-shiny').style.color = game.player.isShiny ? '#d0a000' : 'inherit';
 
         const statsSpriteIcon = document.getElementById('stats-poke-icon');
@@ -265,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const moveHtml = `
             <div class="stat-move-slot">
                 <span class="stat-move-name">${move.name}</span>
-                <span class="stat-move-pp">PP ${move.pp}/${move.maxPP}</span>
+                <span class="stat-move-pp">PP ${move.pp}/${move.MaxPp}</span>
             </div>
             `;
             statsMovesList.insertAdjacentHTML('beforeend', moveHtml);
@@ -281,12 +280,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     attackBtn.addEventListener('click', showMovesMenu);
     btnCancelMove.addEventListener('click', hideMovesMenu);
-    
+
     bagBtn.addEventListener('click', showBagMenu);
     btnCancelBag.addEventListener('click', hideBagMenu);
 
     abilityBtn.addEventListener('click', showPartyMenu);
     btnCancelParty.addEventListener('click', hidePartyMenu);
-    
+
     runBtn.addEventListener('click', () => { game.playerAction('run'); });
 });

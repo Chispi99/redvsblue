@@ -1,4 +1,5 @@
 import Pokemon from './Pokemon.js';
+import Move from './Move.js';
 
 export default class FirePokemon extends Pokemon {
     constructor(name, level, health) {
@@ -6,9 +7,13 @@ export default class FirePokemon extends Pokemon {
         this.type = 'Fuego';
         this.ability = 'Mar Llamas';
         this.moves = [
-            { name: 'Arañazo', type: 'Normal', power: 8, pp: 35, maxPP: 35 },
-            { name: 'Gruñido', type: 'Normal', power: 0, pp: 40, maxPP: 40 },
-            { name: 'Ascuas', type: 'Fuego', power: 15, pp: 25, maxPP: 25 }
+            new Move('Arañazo', 'Normal', 8, 35),
+            new Move('Gruñido', 'Normal', 0, 40),
+            new Move('Ascuas', 'Fuego', 15, 25)
         ];
+    }
+
+    useAbility(target) {
+        return { message: `${this.name} activa su habilidad ${this.ability}!` };
     }
 }

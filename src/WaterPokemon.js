@@ -1,4 +1,5 @@
 import Pokemon from './Pokemon.js';
+import Move from './Move.js';
 
 export default class WaterPokemon extends Pokemon {
     constructor(name, level, health) {
@@ -6,9 +7,13 @@ export default class WaterPokemon extends Pokemon {
         this.type = 'Agua';
         this.ability = 'Torrente';
         this.moves = [
-            { name: 'Placaje', type: 'Normal', power: 8, pp: 35, maxPP: 35 },
-            { name: 'Látigo', type: 'Normal', power: 0, pp: 30, maxPP: 30 },
-            { name: 'Burbuja', type: 'Agua', power: 15, pp: 30, maxPP: 30 }
+            new Move('Placaje', 'Normal', 8, 35),
+            new Move('Látigo', 'Normal', 0, 30),
+            new Move('Burbuja', 'Agua', 15, 30)
         ];
+    }
+
+    useAbility(target) {
+        return { message: `${this.name} activa su habilidad ${this.ability}!` };
     }
 }
